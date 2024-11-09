@@ -1,9 +1,3 @@
-//
-//  AppDelegate.swift
-//  FishFrenzy
-//
-//  Created by Александр Андреев on 09.11.2024.
-//
 
 import UIKit
 
