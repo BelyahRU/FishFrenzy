@@ -34,6 +34,7 @@
 		1A9F65302CDEFFAD00D4CD0F /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9F652F2CDEFFAD00D4CD0F /* ShopView.swift */; };
 		1A9F65322CDF011B00D4CD0F /* ShopVC + Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9F65312CDF011B00D4CD0F /* ShopVC + Action.swift */; };
 		1A9F65342CDF01DF00D4CD0F /* BiteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9F65332CDF01DF00D4CD0F /* BiteView.swift */; };
+		1A9F65362CDF08D900D4CD0F /* UpgradesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9F65352CDF08D900D4CD0F /* UpgradesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		1A9F652F2CDEFFAD00D4CD0F /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
 		1A9F65312CDF011B00D4CD0F /* ShopVC + Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShopVC + Action.swift"; sourceTree = "<group>"; };
 		1A9F65332CDF01DF00D4CD0F /* BiteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiteView.swift; sourceTree = "<group>"; };
+		1A9F65352CDF08D900D4CD0F /* UpgradesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 				1A9F652F2CDEFFAD00D4CD0F /* ShopView.swift */,
 				1A9F65312CDF011B00D4CD0F /* ShopVC + Action.swift */,
 				1A9F65332CDF01DF00D4CD0F /* BiteView.swift */,
+				1A9F65352CDF08D900D4CD0F /* UpgradesView.swift */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				1A9F64E82CDED8FD00D4CD0F /* AppDelegate.swift in Sources */,
 				1A9F65062CDED9E800D4CD0F /* MainViewController.swift in Sources */,
 				1A9F65302CDEFFAD00D4CD0F /* ShopView.swift in Sources */,
+				1A9F65362CDF08D900D4CD0F /* UpgradesView.swift in Sources */,
 				1A9F65232CDEF2DC00D4CD0F /* FishData.swift in Sources */,
 				1A9F651F2CDEEF4100D4CD0F /* AlbumView.swift in Sources */,
 				1A9F65042CDED9B900D4CD0F /* MainCoordinator.swift in Sources */,

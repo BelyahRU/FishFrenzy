@@ -22,6 +22,12 @@ class ShopView: UIView {
         return im
     }()
     
+    public let shrimpView = BiteView(type: .shrimp)
+    public let fishView = BiteView(type: .fish)
+    public let breadView = BiteView(type: .bread)
+    public let hookUpgradeView = UpgradesView(type: .hook)
+    public let lineUpgradeView = UpgradesView(type: .line)
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -41,6 +47,11 @@ class ShopView: UIView {
         addSubview(coinView)
         addSubview(homeButton)
         addSubview(shopLabelImage)
+        addSubview(shrimpView)
+        addSubview(fishView)
+        addSubview(breadView)
+        addSubview(lineUpgradeView)
+        addSubview(hookUpgradeView)
     }
     
     private func setupConstraints() {
@@ -65,6 +76,41 @@ class ShopView: UIView {
             make.top.equalTo(homeButton.snp.bottom).offset(40)
             make.centerX.equalToSuperview()
             make.height.equalTo(60)
+        }
+        
+        shrimpView.snp.makeConstraints { make in
+            make.width.equalTo(350)
+            make.height.equalTo(84)
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-54)
+        }
+        
+        fishView.snp.makeConstraints { make in
+            make.width.equalTo(350)
+            make.height.equalTo(84)
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(shrimpView.snp.top).offset(-12)
+        }
+        
+        breadView.snp.makeConstraints { make in
+            make.width.equalTo(350)
+            make.height.equalTo(84)
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(fishView.snp.top).offset(-12)
+        }
+        
+        lineUpgradeView.snp.makeConstraints { make in
+            make.width.equalTo(169)
+            make.height.equalTo(264)
+            make.top.equalTo(shopLabelImage.snp.bottom).offset(5)
+            make.trailing.equalToSuperview().offset(-self.frame.width / 2 + 5)
+        }
+        
+        hookUpgradeView.snp.makeConstraints { make in
+            make.width.equalTo(169)
+            make.height.equalTo(264)
+            make.top.equalTo(shopLabelImage.snp.bottom).offset(5)
+            make.leading.equalToSuperview().offset(self.frame.width / 2 - 5)
         }
     }
 }
