@@ -5,10 +5,12 @@ import UIKit
 class MainCoordinator: Coordinator {
     var navigationController: UINavigationController!
     var mainViewController: MainViewController!
+    var gameViewController: GameViewController!
     var albumViewController: AlbumViewController!
     var shopViewController: ShopViewController!
     
     func start() {
+//        showShop()
         showMain()
     }
     
@@ -16,6 +18,12 @@ class MainCoordinator: Coordinator {
         mainViewController = MainViewController()
         mainViewController.coordinator = self
         navigationController.pushViewController(mainViewController, animated: true)
+    }
+    
+    func showGame() {
+        gameViewController = GameViewController()
+        gameViewController.coordinator = self
+        navigationController.pushViewController(gameViewController, animated: true)
     }
     
     func showAlbum() {

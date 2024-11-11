@@ -17,7 +17,7 @@ extension MainViewController {
     
     @objc
     func goToFishingPressed() {
-        
+        coordinator?.showGame()
     }
     
     @objc

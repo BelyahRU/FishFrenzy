@@ -10,7 +10,7 @@ class CoinsView: UIView {
     
     private let coinsLabel: UILabel = {
        let label = UILabel()
-        label.text = "99999"
+        label.text = "\(CoinsManager.shared.currentCoins)"
         label.font =  UIFont(name: "Cherry Bomb One", size: 22)
         label.textColor = .white
         label.textAlignment = .center
@@ -51,6 +51,6 @@ class CoinsView: UIView {
     }
     
     public func reloadData() {
-        
+        coinsLabel.text = "\(CoinsManager.shared.currentCoins)"
     }
 }

@@ -22,9 +22,9 @@ class ShopView: UIView {
         return im
     }()
     
-    public let shrimpView = BiteView(type: .shrimp)
-    public let fishView = BiteView(type: .fish)
-    public let breadView = BiteView(type: .bread)
+    public let shrimpView = BiteView(type: .shrimp, isGame: false)
+    public let fishView = BiteView(type: .fish, isGame: false)
+    public let breadView = BiteView(type: .bread, isGame: false)
     public let hookUpgradeView = UpgradesView(type: .hook)
     public let lineUpgradeView = UpgradesView(type: .line)
     
@@ -39,7 +39,14 @@ class ShopView: UIView {
     
     private func configure() {
         setupSubviews()
+        setupBites()
         setupConstraints()
+    }
+    
+    private func setupBites() {
+        shrimpView.updateBitelevelData(levelData: "15...20", price: "200")
+        fishView.updateBitelevelData(levelData: "7...14", price: "30")
+        breadView.updateBitelevelData(levelData: "1...6", price: "10")
     }
     
     private func setupSubviews() {
@@ -103,14 +110,14 @@ class ShopView: UIView {
             make.width.equalTo(169)
             make.height.equalTo(264)
             make.top.equalTo(shopLabelImage.snp.bottom).offset(5)
-            make.trailing.equalToSuperview().offset(-self.frame.width / 2 + 5)
+            make.trailing.equalTo(self.snp.centerX).offset(-10)
         }
         
         hookUpgradeView.snp.makeConstraints { make in
             make.width.equalTo(169)
             make.height.equalTo(264)
             make.top.equalTo(shopLabelImage.snp.bottom).offset(5)
-            make.leading.equalToSuperview().offset(self.frame.width / 2 - 5)
+            make.leading.equalTo(self.snp.centerX).offset(10)
         }
     }
 }

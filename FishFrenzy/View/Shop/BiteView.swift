@@ -20,7 +20,7 @@ class BiteView: UIView {
     
     private let biteLvl: UILabel = {
        let label = UILabel()
-        label.font =  UIFont(name: "Cherry Bomb One", size: 20)
+        label.font =  UIFont(name: "Cherry Bomb One", size: 14)
         label.textColor = .white
         label.textAlignment = .left
         label.text = "Bite 1 Lvl"
@@ -32,7 +32,6 @@ class BiteView: UIView {
         label.font =  UIFont(name: "Cherry Bomb One", size: 15)
         label.textColor = .white
         label.textAlignment = .left
-        label.text = "You have: 12"
         return label
     }()
     
@@ -59,7 +58,23 @@ class BiteView: UIView {
         return button
     }()
     
-    init(type: BiteType) {
+    public let changeButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "changeButton"), for: .normal)
+        button.backgroundColor = .clear
+        return button
+    }()
+    
+    public let isActiveLabel: UILabel = {
+       let label = UILabel()
+        label.font =  UIFont(name: "Cherry Bomb One", size: 18)
+        label.textColor = .white
+        label.textAlignment = .center
+        label.text = "Active"
+        return label
+    }()
+    
+    init(type: BiteType, isGame: Bool) {
         super.init(frame: .zero)
         switch type {
         case .bread:
@@ -69,9 +84,52 @@ class BiteView: UIView {
         case .shrimp:
             biteImage.image = UIImage(named: "biteShrimp")
         }
+        if !isGame {
+            addSubview(buyButton)
+            buyButton.snp.makeConstraints { make in
+                make.width.equalTo(69)
+                make.height.equalTo(44)
+                make.centerY.equalToSuperview()
+                make.trailing.equalToSuperview().offset(-16)
+            }
+            configure()
+            self.bringSubviewToFront(buyButton)
+            addSubview(priceLabel)
+            addSubview(coinImage)
+            priceLabel.snp.makeConstraints { make in
+                make.trailing.equalTo(buyButton.snp.leading).offset(-1)
+                make.centerY.equalToSuperview().offset(-5)
+            }
+            
+            coinImage.snp.makeConstraints { make in
+                make.centerY.equalToSuperview().offset(-5)
+                make.trailing.equalTo(priceLabel.snp.leading).offset(-2)
+            }
+        } else {
+            addSubview(isActiveLabel)
+            addSubview(changeButton)
+            isActiveLabel.snp.makeConstraints { make in
+                make.centerY.equalToSuperview().offset(-5)
+                make.trailing.equalToSuperview().offset(-22)
+            
+            }
+            
+            changeButton.snp.makeConstraints { make in
+                make.width.equalTo(92)
+                make.height.equalTo(44)
+                make.centerY.equalToSuperview()
+                make.trailing.equalToSuperview().offset(-16)
+            }
+            configure()
+            self.bringSubviewToFront(isActiveLabel)
+            isActiveLabel.isHidden = true
+            self.bringSubviewToFront(changeButton)
+            
+            
+        }
         
-        configure()
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -87,9 +145,6 @@ class BiteView: UIView {
         addSubview(biteImage)
         addSubview(biteLvl)
         addSubview(youHave)
-        addSubview(priceLabel)
-        addSubview(coinImage)
-        addSubview(buyButton)
     }
     
     private func setupConstraints() {
@@ -109,24 +164,15 @@ class BiteView: UIView {
             make.top.equalTo(biteLvl.snp.bottom).offset(-4)
             make.leading.equalTo(biteImage.snp.trailing).offset(12)
         }
-        buyButton.snp.makeConstraints { make in
-            make.width.equalTo(69)
-            make.height.equalTo(44)
-            make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().offset(-16)
-        }
-        priceLabel.snp.makeConstraints { make in
-            make.trailing.equalTo(buyButton.snp.leading).offset(-12)
-            make.centerY.equalToSuperview().offset(-5)
-        }
         
-        coinImage.snp.makeConstraints { make in
-            make.centerY.equalToSuperview().offset(-5)
-            make.trailing.equalTo(priceLabel.snp.leading).offset(-5)
-        }
     }
     
-    public func updateData() {
-        
+    public func updateBitelevelData(levelData: String, price: String) {
+        biteLvl.text = "Bite for \(levelData)"
+        priceLabel.text = "\(price)"
+    }
+    
+    public func updateData(currentCount: Int) {
+        youHave.text = "You have: \(currentCount)"
     }
 }

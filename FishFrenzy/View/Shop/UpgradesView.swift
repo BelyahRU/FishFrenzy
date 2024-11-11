@@ -74,7 +74,7 @@ class UpgradesView: UIView {
         case .hook:
             image.image = UIImage(named: Resources.Views.hook)
             nameLabel.text = "Hook Radius"
-            configureLow()
+            configureHigh()
         }
         
     }
@@ -111,8 +111,8 @@ class UpgradesView: UIView {
         }
         maxLevelButton.snp.makeConstraints { make in
             make.width.equalTo(137)
-            make.height.equalTo(44)
-            make.bottom.equalToSuperview().offset(-19)
+            make.height.equalTo(50)
+            make.bottom.equalToSuperview().offset(-45)
             make.centerX.equalToSuperview()
         }
     }
@@ -129,7 +129,7 @@ class UpgradesView: UIView {
         
         back.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(234)
+            make.height.equalTo(258)
             make.width.equalTo(163)
         }
         nameLabel.snp.makeConstraints { make in
@@ -147,17 +147,40 @@ class UpgradesView: UIView {
         }
         upgradeButton.snp.makeConstraints { make in
             make.width.equalTo(137)
-            make.height.equalTo(44)
-            make.bottom.equalToSuperview().offset(-43)
+            make.height.equalTo(50)
+            make.bottom.equalToSuperview().offset(-48)
             make.centerX.equalToSuperview()
         }
         coinImage.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-self.frame.width / 2)
-            make.bottom.equalToSuperview().offset(-8)
+            make.centerX.equalToSuperview().offset(20)
+            make.bottom.equalToSuperview().offset(-20)
         }
         priceLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(self.frame.width / 2)
+            make.trailing.equalTo(coinImage.snp.centerX).offset(-20)
             make.centerY.equalTo(coinImage)
         }
     }
+    
+    public func updateLevel(level: String) {
+      currentLvlLabel.text = "Level \(level)"
+
+      if level == "12" {
+        back.snp.removeConstraints()
+        nameLabel.snp.removeConstraints()
+        currentLvlLabel.snp.removeConstraints()
+        image.snp.removeConstraints()
+        upgradeButton.snp.removeConstraints()
+        coinImage.snp.removeConstraints()
+        priceLabel.snp.removeConstraints()
+        
+        // Удаляем элементы
+        upgradeButton.removeFromSuperview()
+        coinImage.removeFromSuperview()
+        priceLabel.removeFromSuperview()
+        
+        // Перестраиваем с помощью configureLow
+        configureLow()
+      }
+    }
+
 }
