@@ -18,16 +18,16 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        view.addSubview(loadingView)
-//        loadingView.snp.makeConstraints { make in
-//            make.edges.equalToSuperview()
-//        }
-//        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 3.2) {
-//            self.loadingView.isHidden = true
-//            self.configure()
-//        }
-        configure()
+        view.addSubview(loadingView)
+        loadingView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.2) {
+            self.loadingView.isHidden = true
+            self.configure()
+        }
+//        configure()
     }
     
     private func configure() {
@@ -41,5 +41,9 @@ class MainViewController: UIViewController {
         mainView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+    
+    private func setupAchievements() {
+        mainView.dailyChallengeView.reloadData()
     }
 }

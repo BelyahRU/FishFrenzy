@@ -79,45 +79,84 @@ class ShopView: UIView {
             make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(25)
         }
         
-        shopLabelImage.snp.makeConstraints { make in
-            make.top.equalTo(homeButton.snp.bottom).offset(40)
-            make.centerX.equalToSuperview()
-            make.height.equalTo(60)
+        if UIScreen.main.bounds.height < 800 {
+            
+            lineUpgradeView.snp.makeConstraints { make in
+                make.width.equalTo(169)
+                make.height.equalTo(264)
+                make.top.equalTo(homeButton.snp.bottom).offset(5)
+                make.trailing.equalTo(self.snp.centerX).offset(-10)
+            }
+            
+            hookUpgradeView.snp.makeConstraints { make in
+                make.width.equalTo(169)
+                make.height.equalTo(264)
+                make.top.equalTo(homeButton.snp.bottom).offset(5)
+                make.leading.equalTo(self.snp.centerX).offset(10)
+            }
+            shrimpView.snp.makeConstraints { make in
+                make.width.equalTo(350)
+                make.height.equalTo(84)
+                make.centerX.equalToSuperview()
+                make.bottom.equalToSuperview().offset(-20)
+            }
+            
+            fishView.snp.makeConstraints { make in
+                make.width.equalTo(350)
+                make.height.equalTo(84)
+                make.centerX.equalToSuperview()
+                make.bottom.equalTo(shrimpView.snp.top).offset(-4)
+            }
+            
+            breadView.snp.makeConstraints { make in
+                make.width.equalTo(350)
+                make.height.equalTo(84)
+                make.centerX.equalToSuperview()
+                make.bottom.equalTo(fishView.snp.top).offset(-4)
+            }
+        } else {
+            shopLabelImage.snp.makeConstraints { make in
+                make.top.equalTo(homeButton.snp.bottom).offset(40)
+                make.centerX.equalToSuperview()
+                make.height.equalTo(60)
+            }
+            lineUpgradeView.snp.makeConstraints { make in
+                make.width.equalTo(169)
+                make.height.equalTo(264)
+                make.top.equalTo(shopLabelImage.snp.bottom).offset(5)
+                make.trailing.equalTo(self.snp.centerX).offset(-10)
+            }
+            
+            hookUpgradeView.snp.makeConstraints { make in
+                make.width.equalTo(169)
+                make.height.equalTo(264)
+                make.top.equalTo(shopLabelImage.snp.bottom).offset(5)
+                make.leading.equalTo(self.snp.centerX).offset(10)
+            }
+            shrimpView.snp.makeConstraints { make in
+                make.width.equalTo(350)
+                make.height.equalTo(84)
+                make.centerX.equalToSuperview()
+                make.bottom.equalToSuperview().offset(-54)
+            }
+            
+            fishView.snp.makeConstraints { make in
+                make.width.equalTo(350)
+                make.height.equalTo(84)
+                make.centerX.equalToSuperview()
+                make.bottom.equalTo(shrimpView.snp.top).offset(-12)
+            }
+            
+            breadView.snp.makeConstraints { make in
+                make.width.equalTo(350)
+                make.height.equalTo(84)
+                make.centerX.equalToSuperview()
+                make.bottom.equalTo(fishView.snp.top).offset(-12)
+            }
         }
         
-        shrimpView.snp.makeConstraints { make in
-            make.width.equalTo(350)
-            make.height.equalTo(84)
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-54)
-        }
         
-        fishView.snp.makeConstraints { make in
-            make.width.equalTo(350)
-            make.height.equalTo(84)
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(shrimpView.snp.top).offset(-12)
-        }
+    
         
-        breadView.snp.makeConstraints { make in
-            make.width.equalTo(350)
-            make.height.equalTo(84)
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(fishView.snp.top).offset(-12)
-        }
-        
-        lineUpgradeView.snp.makeConstraints { make in
-            make.width.equalTo(169)
-            make.height.equalTo(264)
-            make.top.equalTo(shopLabelImage.snp.bottom).offset(5)
-            make.trailing.equalTo(self.snp.centerX).offset(-10)
-        }
-        
-        hookUpgradeView.snp.makeConstraints { make in
-            make.width.equalTo(169)
-            make.height.equalTo(264)
-            make.top.equalTo(shopLabelImage.snp.bottom).offset(5)
-            make.leading.equalTo(self.snp.centerX).offset(10)
-        }
     }
 }

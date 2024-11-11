@@ -8,10 +8,12 @@ class MainCoordinator: Coordinator {
     var gameViewController: GameViewController!
     var albumViewController: AlbumViewController!
     var shopViewController: ShopViewController!
+    var achievementsViewController: AchievementsViewController!
     
     func start() {
 //        showShop()
         showMain()
+//        showAchievements()
     }
     
     func showMain() {
@@ -36,6 +38,12 @@ class MainCoordinator: Coordinator {
         shopViewController = ShopViewController()
         shopViewController.coordinator = self
         navigationController.pushViewController(shopViewController, animated: true)
+    }
+    
+    func showAchievements() {
+        achievementsViewController = AchievementsViewController()
+        achievementsViewController.coordinator = self
+        navigationController.pushViewController(achievementsViewController, animated: true)
     }
     
     func back() {

@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1A535FB52CE29B5500F0C8A0 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A535FB42CE29B5500F0C8A0 /* PauseView.swift */; };
+		1A535FB82CE2A5B800F0C8A0 /* AchievementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A535FB72CE2A5B800F0C8A0 /* AchievementsViewController.swift */; };
+		1A535FBA2CE2A6E800F0C8A0 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A535FB92CE2A6E800F0C8A0 /* AchievementsView.swift */; };
+		1A535FBC2CE2A7DC00F0C8A0 /* AchievementsVC + Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A535FBB2CE2A7DC00F0C8A0 /* AchievementsVC + Action.swift */; };
+		1A535FBE2CE2AA9D00F0C8A0 /* AchieveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A535FBD2CE2AA9D00F0C8A0 /* AchieveView.swift */; };
+		1A535FC02CE2B23C00F0C8A0 /* AchievementsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A535FBF2CE2B23C00F0C8A0 /* AchievementsManager.swift */; };
 		1A9F64E82CDED8FD00D4CD0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9F64E72CDED8FD00D4CD0F /* AppDelegate.swift */; };
 		1A9F64EA2CDED8FD00D4CD0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9F64E92CDED8FD00D4CD0F /* SceneDelegate.swift */; };
 		1A9F64F12CDED90000D4CD0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A9F64F02CDED90000D4CD0F /* Assets.xcassets */; };
@@ -50,6 +55,11 @@
 
 /* Begin PBXFileReference section */
 		1A535FB42CE29B5500F0C8A0 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
+		1A535FB72CE2A5B800F0C8A0 /* AchievementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsViewController.swift; sourceTree = "<group>"; };
+		1A535FB92CE2A6E800F0C8A0 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
+		1A535FBB2CE2A7DC00F0C8A0 /* AchievementsVC + Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AchievementsVC + Action.swift"; sourceTree = "<group>"; };
+		1A535FBD2CE2AA9D00F0C8A0 /* AchieveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveView.swift; sourceTree = "<group>"; };
+		1A535FBF2CE2B23C00F0C8A0 /* AchievementsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsManager.swift; sourceTree = "<group>"; };
 		1A9F64E42CDED8FD00D4CD0F /* FishFrenzy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FishFrenzy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A9F64E72CDED8FD00D4CD0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A9F64E92CDED8FD00D4CD0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +113,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A535FB62CE2A59200F0C8A0 /* Achievements */ = {
+			isa = PBXGroup;
+			children = (
+				1A535FB72CE2A5B800F0C8A0 /* AchievementsViewController.swift */,
+				1A535FB92CE2A6E800F0C8A0 /* AchievementsView.swift */,
+				1A535FBB2CE2A7DC00F0C8A0 /* AchievementsVC + Action.swift */,
+				1A535FBD2CE2AA9D00F0C8A0 /* AchieveView.swift */,
+			);
+			path = Achievements;
+			sourceTree = "<group>";
+		};
 		1A9F64DB2CDED8FD00D4CD0F = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +168,7 @@
 		1A9F64FC2CDED91C00D4CD0F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1A535FB62CE2A59200F0C8A0 /* Achievements */,
 				1A9F65372CE00AF400D4CD0F /* Game */,
 				1A9F652C2CDEFF5400D4CD0F /* Shop */,
 				1A9F651B2CDEEEB700D4CD0F /* Album */,
@@ -162,6 +184,7 @@
 				1A9F65002CDED94900D4CD0F /* Resources */,
 				1A9F64FF2CDED93F00D4CD0F /* Support */,
 				1A9F65222CDEF2DC00D4CD0F /* FishData.swift */,
+				1A535FBF2CE2B23C00F0C8A0 /* AchievementsManager.swift */,
 				1A9F65242CDEF2E500D4CD0F /* FishManager.swift */,
 				1AA2328A2CE18A410040A6C2 /* ShopManager.swift */,
 				1AA232882CE1888E0040A6C2 /* CoinsManager.swift */,
@@ -338,14 +361,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A535FB82CE2A5B800F0C8A0 /* AchievementsViewController.swift in Sources */,
 				1A9F65322CDF011B00D4CD0F /* ShopVC + Action.swift in Sources */,
 				1A9F651D2CDEEEC400D4CD0F /* AlbumViewController.swift in Sources */,
 				1AA232872CE177400040A6C2 /* GameScene + Fish levels.swift in Sources */,
+				1A535FBC2CE2A7DC00F0C8A0 /* AchievementsVC + Action.swift in Sources */,
 				1AA2328F2CE18FFB0040A6C2 /* GameViewModel.swift in Sources */,
 				1A9F65252CDEF2E500D4CD0F /* FishManager.swift in Sources */,
 				1A9F652B2CDEFC5700D4CD0F /* AlbumViewModel.swift in Sources */,
 				1A9F65182CDEE97C00D4CD0F /* DailyChallengeView.swift in Sources */,
 				1A9F65392CE00B0000D4CD0F /* GameViewController.swift in Sources */,
+				1A535FBA2CE2A6E800F0C8A0 /* AchievementsView.swift in Sources */,
+				1A535FC02CE2B23C00F0C8A0 /* AchievementsManager.swift in Sources */,
 				1A9F65022CDED97D00D4CD0F /* Coordinator.swift in Sources */,
 				1A9F65092CDEDBBC00D4CD0F /* MainView.swift in Sources */,
 				1A9F653D2CE0FE1900D4CD0F /* TargetView.swift in Sources */,
@@ -369,6 +396,7 @@
 				1A9F65162CDEE66D00D4CD0F /* CoinsView.swift in Sources */,
 				1A9F65102CDEDC1700D4CD0F /* Resources.swift in Sources */,
 				1A9F65272CDEFB5100D4CD0F /* AlbumVC + CollectionView.swift in Sources */,
+				1A535FBE2CE2AA9D00F0C8A0 /* AchieveView.swift in Sources */,
 				1A9F651A2CDEEDDF00D4CD0F /* MainVC + Action.swift in Sources */,
 				1A9F650B2CDEDBF200D4CD0F /* LoadingView.swift in Sources */,
 				1A9F64EA2CDED8FD00D4CD0F /* SceneDelegate.swift in Sources */,
@@ -442,7 +470,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -499,7 +527,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

@@ -48,7 +48,9 @@ class GameScene: SKScene {
                                     fish.removeFromParent()
                                     self.showCoinView(at: fish.position, coins: 50)
                                     CoinsManager.shared.addCoins(amount: 50)
-                                    print("Поймана рыба на хлеб: \(fishNameWithoutDirection), \(self.currentBite)")
+                                    FishesManager.shared.changeIsOpenStatus(at: number-1, newStatus: true)
+                                    AchievementsManager.shared.incrementAchievement(index: 1)
+                                    AchievementsManager.shared.incrementAchievement(index: 4)
                                 }
                                 
                                 
@@ -57,7 +59,10 @@ class GameScene: SKScene {
                                     fish.removeFromParent()
                                     self.showCoinView(at: fish.position, coins: 70)
                                     CoinsManager.shared.addCoins(amount: 70)
+                                    FishesManager.shared.changeIsOpenStatus(at: number-1, newStatus: true)
                                     print("Поймана рыба на рыбу: \(fishNameWithoutDirection), \(self.currentBite)")
+                                    AchievementsManager.shared.incrementAchievement(index: 1)
+                                    AchievementsManager.shared.incrementAchievement(index: 4)
                                 }
                                 
                             } else if self.currentBite == "shrimp" && number > 15 && number < 21 {
@@ -66,7 +71,10 @@ class GameScene: SKScene {
                                     fish.removeFromParent()
                                     self.showCoinView(at: fish.position, coins: 200)
                                     CoinsManager.shared.addCoins(amount: 200)
+                                    FishesManager.shared.changeIsOpenStatus(at: number-1, newStatus: true)
                                     print("Поймана рыба на креветку: \(fishNameWithoutDirection), \(self.currentBite)")
+                                    AchievementsManager.shared.incrementAchievement(index: 1)
+                                    AchievementsManager.shared.incrementAchievement(index: 4)
                                 }
                                 
                             }

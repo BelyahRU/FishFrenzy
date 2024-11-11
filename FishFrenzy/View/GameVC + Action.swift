@@ -70,6 +70,7 @@ extension GameViewController {
     func selectFishPressed() {
         currentBite = "fish"
         gameScene.currentBite = "fish"
+        AchievementsManager.shared.incrementAchievement(index: 2)
         countBites.text = "x\(ShopManager.shared.countFishes)"
         biteButton.setImage(UIImage(named: "fishBite"), for: .normal)
         changeBitesView.breadView.changeButton.isHidden = false
@@ -84,6 +85,7 @@ extension GameViewController {
     func selectBreadPressed() {
         currentBite = "bread"
         gameScene.currentBite = "bread"
+        AchievementsManager.shared.incrementAchievement(index: 2)
         countBites.text = "x\(ShopManager.shared.countBreads)"
         biteButton.setImage(UIImage(named: "breadBite"), for: .normal)
         changeBitesView.breadView.changeButton.isHidden = true
@@ -100,6 +102,7 @@ extension GameViewController {
     func selectShrimpPressed() {
         currentBite = "shrimp"
         gameScene.currentBite = "shrimp"
+        AchievementsManager.shared.incrementAchievement(index: 2)
         countBites.text = "x\(ShopManager.shared.countShrimps)"
         biteButton.setImage(UIImage(named: "shrimpBite"), for: .normal)
         changeBitesView.breadView.changeButton.isHidden = false

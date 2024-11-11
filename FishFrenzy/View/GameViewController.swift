@@ -71,6 +71,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         setupGameScene()
         setupButtons()
         setupViewModel()
+        scrollView.isScrollEnabled = false
         NotificationCenter.default.addObserver(self, selector: #selector(reloadCoins), name: NSNotification.Name("reloadCoins"), object: nil)
     }
 
@@ -97,7 +98,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     func setupGameScene() {
         scrollView = UIScrollView(frame: view.frame)
         view.addSubview(scrollView)
-        
+        imageView2.contentMode = .scaleAspectFill
         scrollView.contentInset = UIEdgeInsets(top: -60, left: 0, bottom: -60, right: 0)
         scrollView.addSubview(imageView2)
         imageView2.snp.makeConstraints { make in

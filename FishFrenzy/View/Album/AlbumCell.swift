@@ -33,11 +33,11 @@ class AlbumCell: UICollectionViewCell {
     }
     
     public func setupCell(fish: FishData) {
-        image.image = UIImage(named: fish.albumImageName)
-//        if fish.isOpened {
-//            image.image = UIImage(named: fish.albumImageName)
-//        } else {
-//            image.image = UIImage(named: fish.closedImageName)
-//        }
+//        image.image = UIImage(named: fish.closedImageName)
+        if fish.isOpened {
+            image.image = UIImage(named: fish.albumImageName)
+        } else {
+            image.image = UIImage(named: fish.closedImageName)
+        }
     }
 }

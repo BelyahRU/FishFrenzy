@@ -32,9 +32,9 @@ class GameViewModel {
     }
     
     func getCurrentHook() -> HookImageData {
-//        let hookLevel = shopManager.getCurrentHookLevel()
-        let hookLevel = 5
-        
+        let hookLevel = shopManager.getCurrentHookLevel()
+//        let hookLevel = 5
+//        
         switch hookLevel {
         case 1:
             return HookImageData(name: "hook1", width: 108)

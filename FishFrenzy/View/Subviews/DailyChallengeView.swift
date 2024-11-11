@@ -20,7 +20,7 @@ class DailyChallengeView: UIView {
     
     private let dailyChallengeLabel: UILabel = {
         let label = UILabel()
-         label.text = "Daily Challenge"
+         label.text = "Achievements"
          label.font =  UIFont(name: "Cherry Bomb One", size: 14)
          label.textColor = .white
          label.textAlignment = .left
@@ -87,6 +87,20 @@ class DailyChallengeView: UIView {
     }
     
     public func reloadData() {
+        challengeProgressLabel.text = AchievementsManager.shared.getCurrentPercent()
+        progressView.setProgress(convertTotalToFloat(AchievementsManager.shared.getCurrentPercent()) ?? 0, animated: false)
+    }
+    
+    private func convertTotalToFloat(_ total: String) -> Float? {
+        let components = total.split(separator: "/")
         
+        guard components.count == 2,
+              let numerator = Float(components[0]),
+              let denominator = Float(components[1]),
+              denominator != 0 else {
+            return nil // Возвращаем nil, если что-то пошло не так
+        }
+        
+        return numerator / denominator
     }
 }

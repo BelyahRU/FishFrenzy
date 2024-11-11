@@ -4,7 +4,9 @@ class CoinsManager {
 
     static let shared = CoinsManager()
     
-    private init() {}
+    private init() {
+        initializeCoinsIfNeeded()
+    }
     
     private let userDefaults = UserDefaults.standard
     private let coinsKey = "coins"
@@ -30,5 +32,9 @@ class CoinsManager {
         }
     }
     
-    
+    private func initializeCoinsIfNeeded() {
+        if userDefaults.integer(forKey: coinsKey) == 0 {
+            currentCoins = 1000 // Установить начальную сумму коинов на 1000
+        }
+    }
 }

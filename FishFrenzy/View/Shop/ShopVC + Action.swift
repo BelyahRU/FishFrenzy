@@ -50,6 +50,7 @@ extension ShopViewController {
         if !viewModel.buyHook() {
             showAlert(title: "Not Enough Coins", message: "You need more coins to purchase this upgrade. Keep playing to earn more coins!")
         } else {
+            AchievementsManager.shared.incrementAchievement(index: 0)
             reloadLevelsData()
         }
     }
@@ -59,6 +60,7 @@ extension ShopViewController {
         if !viewModel.buyLine() {
             showAlert(title: "Not Enough Coins", message: "You need more coins to purchase this upgrade. Keep playing to earn more coins!")
         } else {
+            AchievementsManager.shared.incrementAchievement(index: 0)
             reloadLevelsData()
         }
     }
