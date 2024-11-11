@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A535FB52CE29B5500F0C8A0 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A535FB42CE29B5500F0C8A0 /* PauseView.swift */; };
 		1A9F64E82CDED8FD00D4CD0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9F64E72CDED8FD00D4CD0F /* AppDelegate.swift */; };
 		1A9F64EA2CDED8FD00D4CD0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9F64E92CDED8FD00D4CD0F /* SceneDelegate.swift */; };
 		1A9F64F12CDED90000D4CD0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A9F64F02CDED90000D4CD0F /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A535FB42CE29B5500F0C8A0 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
 		1A9F64E42CDED8FD00D4CD0F /* FishFrenzy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FishFrenzy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A9F64E72CDED8FD00D4CD0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A9F64E92CDED8FD00D4CD0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				1A9F653E2CE104CC00D4CD0F /* GameVC + Action.swift */,
 				1AA232862CE177400040A6C2 /* GameScene + Fish levels.swift */,
 				1AA232902CE1A9430040A6C2 /* ChangeBitesView.swift */,
+				1A535FB42CE29B5500F0C8A0 /* PauseView.swift */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				1AA232892CE1888E0040A6C2 /* CoinsManager.swift in Sources */,
 				1A9F65342CDF01DF00D4CD0F /* BiteView.swift in Sources */,
 				1A9F653F2CE104CC00D4CD0F /* GameVC + Action.swift in Sources */,
+				1A535FB52CE29B5500F0C8A0 /* PauseView.swift in Sources */,
 				1A9F65162CDEE66D00D4CD0F /* CoinsView.swift in Sources */,
 				1A9F65102CDEDC1700D4CD0F /* Resources.swift in Sources */,
 				1A9F65272CDEFB5100D4CD0F /* AlbumVC + CollectionView.swift in Sources */,

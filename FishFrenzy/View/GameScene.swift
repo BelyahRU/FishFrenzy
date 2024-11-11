@@ -14,35 +14,102 @@ class GameScene: SKScene {
     
     var hook: SKSpriteNode! // Замените на имя файла вашей монеты
     var currentHook: HookImageData!
-
+    var currentBite = "bread"
 
     override func didMove(to view: SKView) {
         super.didMove(to: view)
         setupLevels()
-        setupBacks()
+//        setupBacks()
         setupHook()
         self.backgroundColor = .clear
         view.isMultipleTouchEnabled = false
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+        
     }
 
         @objc func handleTap(sender: UITapGestureRecognizer) {
             let touchLocation = sender.location(in: self.view)
-            print(hook.frame.maxY)
             if touchLocation.x < hook.frame.maxX && touchLocation.x > hook.frame.minX && touchLocation.y > 2532 - hook.frame.maxY && touchLocation.y < 2532 - hook.frame.minY {
-                print("contains")
                 enumerateChildNodes(withName: "fish") { node, _ in
                     let fish = node as! SKSpriteNode
                     if touchLocation.x < fish.frame.maxX && touchLocation.x > fish.frame.minX && touchLocation.y > 2532 - fish.frame.maxY && touchLocation.y < 2532 - fish.frame.minY {
-                        fish.removeFromParent()
                         let fishName = fish.texture?.description.components(separatedBy: " ")[1] ?? "Без имени"
                         let fishNameWithoutDirection = fishName.replacingOccurrences(of: "Left", with: "").replacingOccurrences(of: "Right", with: "")
-                        print("Поймана рыба: \(fishNameWithoutDirection)")
+                        print(fishNameWithoutDirection)
+                        var numberString = fishNameWithoutDirection.replacingOccurrences(of: "fish", with: "").trimmingCharacters(in: .whitespacesAndNewlines)
+                        
+                        let filteredNumberString = numberString.filter { "0123456789".contains($0) }
+
+                        if let number = Int(filteredNumberString)  {
+                            print("Поймана рыба: \(number), \(self.currentBite)")
+                            if self.currentBite == "bread" && number <= 6 {
+                                
+                                if ShopManager.shared.spendBread() {
+                                    fish.removeFromParent()
+                                    self.showCoinView(at: fish.position, coins: 50)
+                                    CoinsManager.shared.addCoins(amount: 50)
+                                    print("Поймана рыба на хлеб: \(fishNameWithoutDirection), \(self.currentBite)")
+                                }
+                                
+                                
+                            } else if self.currentBite == "fish" && number <= 15 && number > 6 {
+                                if ShopManager.shared.spendFish() {
+                                    fish.removeFromParent()
+                                    self.showCoinView(at: fish.position, coins: 70)
+                                    CoinsManager.shared.addCoins(amount: 70)
+                                    print("Поймана рыба на рыбу: \(fishNameWithoutDirection), \(self.currentBite)")
+                                }
+                                
+                            } else if self.currentBite == "shrimp" && number > 15 && number < 21 {
+                                
+                                if ShopManager.shared.spendShrimp() {
+                                    fish.removeFromParent()
+                                    self.showCoinView(at: fish.position, coins: 200)
+                                    CoinsManager.shared.addCoins(amount: 200)
+                                    print("Поймана рыба на креветку: \(fishNameWithoutDirection), \(self.currentBite)")
+                                }
+                                
+                            }
+                            NotificationCenter.default.post(name: NSNotification.Name("reloadCoins"), object: nil)
+                            
+                        }
+                        
                         return
                     }
                 }
             }
         }
+    
+    private func showCoinView(at position: CGPoint, coins: Int) {
+        // Создаем UIView для монеты
+        let coinView = UIView(frame: CGRect(x: position.x - 25, y: 2535 - position.y - 25, width: 60, height: 30))
+        coinView.backgroundColor = UIColor.clear
+        print(position)
+        // Добавляем изображение монеты
+        let coinImageView = UIImageView(image: UIImage(named: "coin"))
+        coinImageView.contentMode = .scaleAspectFit
+        coinImageView.frame = CGRect(x: 0, y: 15, width: 24, height: 24)
+        coinView.addSubview(coinImageView)
+        
+        // Добавляем UILabel с текстом "+50"
+        let label = UILabel(frame: CGRect(x: 15, y: 15, width: 50, height: 20))
+        label.text = "+\(coins)" // Сумму можно изменить здесь
+        label.font = UIFont(name: "Cherry Bomb One", size: 18)
+        label.textAlignment = .center
+        label.textColor = .white
+        coinView.addSubview(label)
+        
+        // Убедимся, что self.view не nil перед добавлением subview
+        if let mainView = self.view {
+            mainView.addSubview(coinView)
+            mainView.bringSubviewToFront(coinView)
+            // Анимация исчезновения
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                coinView.removeFromSuperview()
+            }
+        }
+    }
+
     
     func setupHook() {
         hook = SKSpriteNode()

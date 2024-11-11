@@ -79,10 +79,13 @@ class BiteView: UIView {
         switch type {
         case .bread:
             biteImage.image = UIImage(named: "biteBread")
+            biteLvl.text = "Bites for 1...6"
         case .fish:
             biteImage.image = UIImage(named: "biteFish")
+            biteLvl.text = "Bites for 7...14"
         case .shrimp:
             biteImage.image = UIImage(named: "biteShrimp")
+            biteLvl.text = "Bites for 15...20"
         }
         if !isGame {
             addSubview(buyButton)

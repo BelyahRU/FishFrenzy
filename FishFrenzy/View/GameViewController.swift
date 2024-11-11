@@ -34,14 +34,33 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     var hookLevel = 1
     
     let changeBitesView = ChangeBitesView()
+    let pauseView = PauseView()
     var currentBite = "bread"
     
     let biteButton: UIButton = {
        let button = UIButton()
         button.setImage(UIImage(named: "breadBite"), for: .normal)
-        button.isHidden = true
+        button.isHidden = false
         return button
     }()
+    
+    let pauseButton: UIButton = {
+       let button = UIButton()
+        button.setImage(UIImage(named: "pauseButton"), for: .normal)
+        return button
+    }()
+    
+    let countBites: UILabel = {
+        let label = UILabel()
+         label.font =  UIFont(name: "Cherry Bomb One", size: 18)
+         label.textColor = .white
+         label.textAlignment = .left
+         label.text = "x\(ShopManager.shared.countBreads)"
+         return label
+     }()
+    
+    let coinsView = CoinsView()
+    var blurView: UIVisualEffectView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,13 +71,25 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         setupGameScene()
         setupButtons()
         setupViewModel()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadCoins), name: NSNotification.Name("reloadCoins"), object: nil)
     }
+
+    @objc
+    func reloadCoins() {
+        coinsView.reloadData()
+        if currentBite == "bread" {
+            countBites.text = "x\(ShopManager.shared.countBreads)"
+        } else if currentBite == "shrimp" {
+            countBites.text = "x\(ShopManager.shared.countShrimps)"
+        } else if currentBite == "fish" {
+            countBites.text = "x\(ShopManager.shared.countFishes)"
+        }
+    }
+    
     
     func setupViewModel() {
         maxHeight = viewModel.getMaxLineHeight()
         changeBitesView.shrimpView.updateData(currentCount: viewModel.getCountShrimps())
-        changeBitesView.breadView.changeButton.isHidden = true
-        changeBitesView.breadView.isActiveLabel.isHidden = false
         changeBitesView.breadView.updateData(currentCount: viewModel.getCountBreads())
         changeBitesView.fishView.updateData(currentCount: viewModel.getCountFishes())
     }
@@ -86,6 +117,10 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
 
         view.addSubview(lowerButton)
         view.addSubview(pullUpButton)
+        view.addSubview(pauseButton)
+        view.addSubview(biteButton)
+        view.addSubview(countBites)
+        view.addSubview(coinsView)
 
         lowerButton.snp.makeConstraints { make in
             make.width.equalTo(172)
@@ -99,6 +134,18 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
             make.height.equalTo(92)
             make.bottom.equalToSuperview().offset(-18)
             make.trailing.equalToSuperview().offset(-5)
+        }
+        
+        pauseButton.snp.makeConstraints { make in
+            make.size.equalTo(60)
+            make.leading.equalToSuperview().offset(20)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(25)
+        }
+        coinsView.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-20)
+            make.height.equalTo(60)
+            make.width.equalTo(150)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(25)
         }
         
 
@@ -139,18 +186,37 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         }
         
         scrollView.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
+        let blurEffect = UIBlurEffect(style: .prominent)
+        blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = self.view.frame// Устанавливаем размер размытия на размер кнопки
+        view.addSubview(blurView) //
+        blurView.isHidden = true
         view.addSubview(changeBitesView)
         changeBitesView.snp.makeConstraints { make in
             make.height.equalTo(446)
             make.width.equalTo(350)
             make.center.equalToSuperview()
         }
+        view.addSubview(pauseView)
+        pauseView.snp.makeConstraints { make in
+            make.width.equalTo(240)
+            make.height.equalTo(318+16+52+10)
+            make.center.equalToSuperview()
+        }
+        pauseView.isHidden = true
         changeBitesView.isHidden = true
-        view.addSubview(biteButton)
+        changeBitesView.breadView.changeButton.isHidden = true
+        changeBitesView.breadView.isActiveLabel.isHidden = false
+        
         biteButton.snp.makeConstraints { make in
             make.size.equalTo(60)
-            make.bottom.equalToSuperview().offset(-130)
+            make.bottom.equalTo(lowerButton.snp.top).offset(-20)
             make.leading.equalToSuperview().offset(24)
+        }
+        
+        countBites.snp.makeConstraints { make in
+            make.leading.equalTo(biteButton.snp.trailing).offset(5)
+            make.centerY.equalTo(biteButton.snp.centerY)
         }
     }
 

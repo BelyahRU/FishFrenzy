@@ -91,6 +91,33 @@ class ShopManager {
         }
     }
     
+    func spendBread() -> Bool {
+        if countBreads - 1 >= 0 {
+            countBreads -= 1
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func spendFish() -> Bool {
+        if countFishes - 1 >= 0 {
+            countFishes -= 1
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func spendShrimp() -> Bool {
+        if countShrimps - 1 >= 0 {
+            countShrimps -= 1
+            return true
+        } else {
+            return false
+        }
+    }
+    
     func buyFish() -> Bool {
         let fishPrice = 30
         if CoinsManager.shared.currentCoins >= fishPrice {

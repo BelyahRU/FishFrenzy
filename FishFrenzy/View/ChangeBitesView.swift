@@ -6,7 +6,7 @@ final class ChangeBitesView: UIView {
     
     private let back = UIImageView(image: UIImage(named: "changeBitesView"))
     
-    private let cancelButton: UIButton = {
+    public let cancelButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "cancelButton"), for: .normal)
         button.backgroundColor = .clear
